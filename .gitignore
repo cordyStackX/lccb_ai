@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Confidential
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.zip
+*.tar.gz
