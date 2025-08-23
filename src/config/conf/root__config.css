@@ -1,0 +1,38 @@
+:root {
+    /* Default Theme */
+    --background: #1ca9c9;
+    --foreground: #171717;
+    --default-text-color: #dadada;
+    --primary-color: #0070f3;
+    --secondary-color: #87ceeb;
+    --text-color: #dadada;
+    --text-color-secondary: #002869;
+
+    /* Header Text Size */
+    --header-font-size: 1.5rem;
+
+    /* Banner Text Size */
+    --banner-font-size: 1.5rem;
+    --banner-title-font-size: 3rem;
+
+    /* Heights */
+    --header-height: 70px;
+    --banner-height: 768px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    :root {
+        --header-font-size: 1.2rem;
+        --banner-font-size: 1.2rem;
+        --banner-title-font-size: 2.4rem;
+        --banner-height: 600px;
+        --header-height: 60px;
+    }
+}
+@media (max-height: 600px) {
+    :root {
+        --header-height: 60px;
+        --banner-height: 500px;
+    }
+}

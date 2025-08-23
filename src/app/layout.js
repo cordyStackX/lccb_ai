@@ -13,7 +13,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "La Consolacion College Bacolod AI",
-  description: "",
+  description:
+    "AI PDF reader for LCC Bacolod: Summarize, ask questions, and interact with your documents smarter and faster.",
 };
 
 export default function RootLayout({ children }) {

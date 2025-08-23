@@ -1,0 +1,26 @@
+.Banner {
+    width: 100%;
+    height: var(--banner-height);
+}
+.Banner__content {
+    width: min(100%, 1200px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.Banner__content h1 {
+    font-size: var(--banner-title-font-size);
+    color: var(--text-color);
+    text-align: center;
+    font-weight: bolder;
+    margin: 1rem 0.8rem;
+}
+.Banner__subtitle {
+    font-size: var(--banner-font-size);
+    color: var(--text-color-secondary);
+    text-align: center;
+    margin: 0 0.5rem;
+}

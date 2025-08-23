@@ -13,7 +13,7 @@ export default function Header() {
                     />
                 </div>
                 <div className='Header__title'>
-                    <h1>La Consolacion College Bacolod AI</h1>
+                    <h2>La Consolacion College Bacolod AI</h2>
                 </div>
             </div>
         </header>
