@@ -24,3 +24,22 @@
     text-align: center;
     margin: 0 0.5rem;
 }
+.Banner__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.2rem 0;
+}
+.Banner__actions button {
+    background: var(--primary-color);
+    color: var(--default-text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 0 1rem;
+}
+.Banner__actions button:hover {
+    background: var(--secondary-color);
+}

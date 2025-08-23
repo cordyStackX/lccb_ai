@@ -3,12 +3,25 @@ from sentence_transformers import SentenceTransformer
 from transformers import pipeline
 import faiss
 import numpy as np
+import re
+
+def clean_text(text):
+    # Remove excessive whitespace and non-printable characters
+    return re.sub(r'\s+', ' ', text).strip()
 
 # Load PDF
 reader = PdfReader("file.pdf")
-text_pages = [page.extract_text() for page in reader.pages if page.extract_text()]
+text_pages = []
+for page in reader.pages:
+    raw = page.extract_text()
+    if raw:
+        cleaned = clean_text(raw)
+        if cleaned:  # Only add if not empty after cleaning
+            text_pages.append(cleaned)
+
 if not text_pages:
     raise ValueError("PDF has no extractable text (might be scanned; try OCR).")
+
 text = " ".join(text_pages)
 
 # Split into chunks (simple char-based)
@@ -28,7 +41,7 @@ index = faiss.IndexFlatL2(embeddings.shape[1])
 index.add(embeddings)
 
 # Example semantic query
-query = "When is the moon landing?"
+query = "What is the Marc expertise?"
 q_emb = model.encode([query])
 q_emb = np.array(q_emb)
 if q_emb.ndim == 1:

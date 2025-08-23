@@ -6,6 +6,10 @@ export default function Banner() {
                 <div className="Banner__subtitle">
                     <p>Summarize and chat with your PDFs using AI.</p>
                 </div>
+                <div className="Banner__actions">
+                    <button>Open PDF</button>
+                    <button>Documentations</button>
+                </div>
             </div>
         </section>
     );
