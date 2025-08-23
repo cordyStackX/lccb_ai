@@ -25,4 +25,5 @@ body {
   width: 100dvw;
   height: auto;
   margin: 0 auto;
+  position: relative;
 }

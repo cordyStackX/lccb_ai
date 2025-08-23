@@ -27,5 +27,17 @@
     margin: 0 1rem;
     color: var(--text-color);
 }
-
-
+.Header__button {
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
+    border-radius: 10px;
+    opacity: 1;
+}
+.Header__button:hover {
+    opacity: 0.5;
+}
