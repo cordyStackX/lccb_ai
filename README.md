@@ -4,7 +4,7 @@ This project is an AI-powered PDF reader and assistant for La Consolacion Colleg
 
 With this app, you can:
 
-- **Summarize PDF documents** using advanced AI models.
+- **Summarize PDF documents** using Python AI models.
 - **Ask questions** about your PDFs and get instant answers.
 - **Chat with your documents** for a more interactive reading experience.
 
