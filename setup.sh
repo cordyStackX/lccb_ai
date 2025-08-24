@@ -28,4 +28,12 @@ pip install -r requirements.txt
 
 echo "Codespace installation demo complete!"
 
+echo "Starting API server... 
+python3 /src/app/python/api_server.py
+"
+
+python3 /src/app/python/api_server.py
+
+
+
 
