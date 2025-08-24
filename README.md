@@ -16,7 +16,8 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 
 ## How to Run the Python API and Nextjs
 
-1. Open this repository in your Codespace or UBUNTU WSL.
+1. Open this repository in your Codespace or clone to UBUNTU WSL.
+
 2. In your terminal, run:
 
     ```sh
@@ -26,3 +27,9 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 3. Once setup is complete, open the web app
 
    [http://localhost:3000/](http://localhost:3000/)
+
+## Config the RPC_Endpoint
+
+1. Get your RPC at https://portal.cdp.coinbase.com/products/address-history
+
+2. Config and Update the RPC_Endpoint in /src/app/config/conf/setting.json.
