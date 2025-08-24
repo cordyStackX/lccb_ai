@@ -32,18 +32,13 @@ pip install -r requirements.txt
 echo "
 
 Codespace installation demo complete!
-
 "
 
-echo "
-
-Running npm run build
-
-"
+echo "Running npm run build"
 npm run build
 
 echo "Starting API server..."
-nohup python3 /src/app/python/api_server.py &
+nohup python3 /src/python/api_server.py &
 
 echo "Starting Nextjs at http://localhost:3000"
 npm run start
