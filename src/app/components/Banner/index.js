@@ -9,7 +9,7 @@ export default function Banner({ onDemoClick }) {
           <p>Summarize and chat with your PDFs using AI.</p>
         </div>
         <div className="Banner__actions">
-          <button onClick={onDemoClick}>Use Online Demo</button>
+          <button onClick={onDemoClick}>Ask AI</button>
           <button onClick={() => window.open("https://github.com/cordy001/lccb_ai", "_blank")}>Use Github Repo</button>
         </div>
       </div>

@@ -1,28 +1,44 @@
 "use client";
 import { useState } from 'react';
-import { HandleSubmit } from '@/app/modules/Modules__Imports';
+import { HandleSubmit, HandleAsk } from '@/app/modules/Modules__Imports';
 import { useAccount } from 'wagmi';
 
 export default function ChatBot({ visible, onClose }) {
   // const [question, setQuestion] = useState('');
   const [pdfFile, setPdfFile] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
   const { address } = useAccount();
 
   const OnSubmit = async (event) => {
     await HandleSubmit(event, pdfFile, address);
   };
 
+  const OnAsk = async (event) => {
+    await HandleAsk(event, questions, address, setResponse, setLoading);
+  };
+
   if (!visible) return null;
 
   return (
     <section className='ChatBot'>
-      <h2>Try the Demo</h2>
+      <h2>Ask AI</h2>
 
       <div className="Response">
-        <p>Upload your PDF file and ask questions about its content.</p>
-      <div className="InputText">
-        <input type="text" placeholder="Ask a question about your PDF..." />
-      </div>
+        {loading && <p>AI is thinking... <br /> This may take a moment.</p>}
+        {!loading && response && (
+          <>
+            {response.answer && <p><strong>Answer:</strong> {response.answer}</p>}
+            {response.summary && <p><strong>Summary:</strong> {response.summary}</p>}
+            {response.error && <p style={{ color: "salmon" }}>{response.error}</p>}
+          </>
+        )}
+        <div className="InputText">
+          <form onSubmit={OnAsk}>
+            <input type="text" onChange={(e) => setQuestions(e.target.value)} placeholder="Ask a question about your PDF..." />
+          </form>
+        </div>
       </div>
       <form onSubmit={OnSubmit}>
       <div className="InputArea">
