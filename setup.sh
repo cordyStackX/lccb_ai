@@ -17,6 +17,9 @@ node -v
 npm -v
 npx -v
 
+echo "Installing NPM packages..."
+npm install
+
 echo "Python version:"
 python3 -V
 
@@ -30,10 +33,14 @@ echo "Codespace installation demo complete!"
 
 echo "Starting API server... 
 python3 /src/app/python/api_server.py
+
+open the browser and navigate to https://lccb-ai.vercel.app/
+
 "
 
-python3 /src/app/python/api_server.py
+python3 src/python/api_server.py
 
 
 
 
+# Keep the script running to maintain the Codespace environment
