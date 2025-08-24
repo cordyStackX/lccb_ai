@@ -25,4 +25,4 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 
 3. Once setup is complete, open the web app
 
-[https://lccb-ai.vercel.app/](https://lccb-ai.vercel.app/)
+   [https://lccb-ai.vercel.app/](https://lccb-ai.vercel.app/)
