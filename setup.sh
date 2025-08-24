@@ -1,15 +1,12 @@
 #!/bin/bash
-
-# setup.sh - Automation for Codespace installations demo
-
 set -e
 
-echo "Starting Codespace installation demo..."
+echo "Starting installation..."
 
 # Update package lists
 sudo apt-get update
 
-# Install essential packages
+# Install essential packages (optional if already present in Codespaces)
 sudo apt-get install -y npm nodejs python3 python3-pip
 
 echo "Node.js version:"
@@ -29,18 +26,13 @@ python3 -m pip install --upgrade pip
 # Install Python packages
 pip install -r requirements.txt
 
-echo "
-
-Codespace installation demo complete!
-"
-
-echo "Running npm run build"
+echo "Building Next.js app..."
 npm run build
 
-echo "Starting API server..."
-nohup python3 /src/python/api_server.py &
+# Start FastAPI in background
+echo "Starting FastAPI server..."
+nohup python3 src/python/api_server.py > fastapi.log 2>&1 &
 
-echo "Starting Nextjs at http://localhost:3000"
+# Start Next.js server (this will block)
+echo "Starting Next.js at http://localhost:3000"
 npm run start
-
-# Keep the script running to maintain the Codespace environment
