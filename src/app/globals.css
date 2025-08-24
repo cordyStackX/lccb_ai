@@ -38,3 +38,21 @@ form {
   align-items: center;
   flex-flow: column;
 }
+
+.warning {
+  position: absolute;
+  top: 1rem;
+  left: 1%;
+  background: rgb(255, 51, 0);
+  color: #fff;
+  padding: 1rem;
+  border: 1px solid red;
+  border-radius: 0.5rem;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  font-weight: bold;
+}
+
+.hidden {
+  opacity: 0;
+}

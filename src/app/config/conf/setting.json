@@ -6,10 +6,11 @@
     },
     "Note": {
         "description": "Dont send any token in the PRIVATE_KEY this is only for test purposes",
-        "warning": "Use a secure method to manage your private keys in production and never commit this setting.json file"
+        "warning": "Use a secure method to manage your private keys in production and never commit this setting.json file",
+        "note": "Please Visit https://portal.cdp.coinbase.com/products/address-history to get your RPC Endpoint"
     },
     "PUBLIC_ACCESS": {
-        "PROJECT_ID": "input your PROJECT_ID here",
+        "RPC_Endpoint": "",
         "CONTRACT_ADDRESS": "0x60ABCe0329a628e2Be121462998B6497Da76972e",
         "PRIVATE_KEY": "91ff5fbb1220dc6ad027ed2273a1c75bb3c8a489015c4ecd088fb6ebbff6ab29",
         "PLATFORM_ADDRESS": "0xD170b2A5441766ff39E1286a1dBD705D4735bFCe"

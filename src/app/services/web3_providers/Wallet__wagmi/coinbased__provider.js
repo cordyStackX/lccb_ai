@@ -25,12 +25,12 @@ const baseSepolia = defineChain({
   rpcUrls: {
     default: {
       http: [
-        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.PROJECT_ID,
+        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.RPC_Endpoint,
       ],
     },
     public: {
       http: [
-        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.PROJECT_ID,
+        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.RPC_Endpoint,
       ],
     },
   },
