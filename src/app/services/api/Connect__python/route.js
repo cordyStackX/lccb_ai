@@ -5,15 +5,21 @@ export async function POST(req) {
     try {
         const formDataFile = await req.formData();
         const pdfFile = formDataFile.get("pdf");
+        const address = formDataFile.get("address");
 
         if (!pdfFile || pdfFile.size === 0) {
             return NextResponse.json({ error: "No PDF file uploaded." }, { status: 400 });
         }
 
+        if (!address) {
+            return NextResponse.json({ error: "No wallet address provided." }, { status: 400 });
+        }
+
         const apiUrl = "http://localhost:8000/upload";
 
         const formData = new FormData();
-        formData.append("pdf", pdfFile, pdfFile.name);
+        formData.append("pdf", pdfFile);
+        formData.append("address", address);
 
         const response = await fetch(apiUrl, {
             method: "POST",

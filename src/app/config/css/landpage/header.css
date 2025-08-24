@@ -1,6 +1,6 @@
 .Header {
     width: 100%;
-    height: var(--header-height);
+    height: auto;
     background-color: var(--primary-color);
 }
 .Header__content {
@@ -9,7 +9,7 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-around;
 }
 .Header__logo {
     width: 20%;
@@ -17,27 +17,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
 }
 .Header__title {
-    flex-grow: 1;
     text-align: left;
     font-size: var(--header-font-size);
     font-weight: bold;
-    margin: 0 1rem;
+    margin: 0.5rem 0;
     color: var(--text-color);
 }
-.Header__button {
-    background-color: var(--secondary-color);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: var(--border-radius);
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: opacity 0.8s ease;
-    border-radius: 10px;
-    opacity: 1;
+.Header__actions {
+    width: auto;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 1rem;
 }
-.Header__button:hover {
-    opacity: 0.5;
-}
+

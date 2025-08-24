@@ -1,9 +1,8 @@
 import Image from 'next/image';
+import '@rainbow-me/rainbowkit/styles.css';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Header() {
-
-    
-
     return(
         <header className="Header">
             <div className="Header__content">
@@ -16,10 +15,10 @@ export default function Header() {
                     />
                 </div>
                 <div className='Header__title'>
-                    <h2>La Consolacion College Bacolod AI</h2>
+                    <h2>LCCB AI</h2>
                 </div>
                 <div className='Header__actions'>
-                    <button className='Header__button'>Connect Wallet Based</button>
+                    <ConnectButton showBalance={false} />
                 </div>
             </div>
         </header>

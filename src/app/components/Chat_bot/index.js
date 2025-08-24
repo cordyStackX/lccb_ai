@@ -1,13 +1,15 @@
 "use client";
 import { useState } from 'react';
 import { HandleSubmit } from '@/app/modules/Modules__Imports';
+import { useAccount } from 'wagmi';
 
 export default function ChatBot({ visible, onClose }) {
   // const [question, setQuestion] = useState('');
   const [pdfFile, setPdfFile] = useState(null);
+  const { address } = useAccount();
 
   const OnSubmit = async (event) => {
-    await HandleSubmit(event, pdfFile);
+    await HandleSubmit(event, pdfFile, address);
   };
 
   if (!visible) return null;

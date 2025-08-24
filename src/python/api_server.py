@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.middleware.cors import CORSMiddleware
 from uuid import uuid4
@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 # Directory where files will be stored
-UPLOAD_DIR = Path("/tmp/lccb_ai_uploads")
+UPLOAD_DIR = Path("./tmp/lccb_ai_uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 # Root test route
@@ -27,10 +27,12 @@ def root():
 
 # Upload PDF route
 @app.post("/upload")
-async def upload_pdf(pdf: UploadFile = File(...)):
+async def upload_pdf(pdf: UploadFile = File(...), address: str = Form(...)):
     # Generate a unique file ID
     file_id = uuid4().hex
-    
+    safe_address = address.replace(" ", "_")  # avoid spaces
+    dest = UPLOAD_DIR / f"{safe_address}_{file_id}.pdf"
+
     # Destination path for saving file
     dest = UPLOAD_DIR / f"{file_id}.pdf"
     
