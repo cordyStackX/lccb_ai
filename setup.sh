@@ -29,18 +29,23 @@ python3 -m pip install --upgrade pip
 # Install Python packages
 pip install -r requirements.txt
 
-echo "Codespace installation demo complete!"
+echo "
 
-echo "Starting API server... 
-python3 /src/app/python/api_server.py
-
-open the browser and navigate to https://lccb-ai.vercel.app/
+Codespace installation demo complete!
 
 "
 
-python3 src/python/api_server.py
+echo "
 
+Running npm run build
 
+"
+npm run build
 
+echo "Starting API server..."
+nohup python3 /src/app/python/api_server.py &
+
+echo "Starting Nextjs at http://localhost:3000"
+npm run start
 
 # Keep the script running to maintain the Codespace environment
