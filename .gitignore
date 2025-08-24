@@ -47,3 +47,5 @@ next-env.d.ts
 *.xlsx
 *.zip
 *.tar.gz
+
+/src/app/config/conf/settings.json
