@@ -7,15 +7,43 @@ import {
 
 import { WagmiConfig } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { mainnet } from 'wagmi/chains';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import '@rainbow-me/rainbowkit/styles.css';
+import { defineChain } from 'viem';
+import configuration from '@/app/config/conf/setting.json';
 
-// Wagmi + Rainbow config
+// Define your custom Base Sepolia chain
+const baseSepolia = defineChain({
+  id: 84532,
+  name: 'Base Sepolia',
+  network: 'base-sepolia',
+  nativeCurrency: {
+    name: 'Base Sepolia Ether',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: [
+        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.PROJECT_ID,
+      ],
+    },
+    public: {
+      http: [
+        process.env.NEXT_PUBLIC_LINK_PROJECT_ID || configuration.PUBLIC_ACCESS.PROJECT_ID,
+      ],
+    },
+  },
+  blockExplorers: {
+    default: { name: 'Basescan', url: 'https://sepolia.basescan.org' },
+  },
+  testnet: true,
+});
+
 const config = getDefaultConfig({
   appName: 'Test Wallet App',
-  projectId: '2a6ea45d7b774258abb68a5e1d7d80e0', // walletconnect projectId
-  chains: [mainnet],
+  projectId: '7f849b22-bdf9-40e2-91a2-0b4a0c12afc9', // walletconnect projectId
+  chains: [baseSepolia], // Use your custom chain here!
 });
 
 const queryClient = new QueryClient();
@@ -24,7 +52,7 @@ export default function WalletProviders({ children }) {
   return (
     <WagmiConfig config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider chains={[baseSepolia]}>
           <OnchainKitProvider>
             {children}
           </OnchainKitProvider>

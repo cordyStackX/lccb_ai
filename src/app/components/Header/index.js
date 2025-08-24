@@ -2,7 +2,10 @@ import Image from 'next/image';
 import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
+
 export default function Header() {
+    
+
     return(
         <header className="Header">
             <div className="Header__content">
@@ -18,7 +21,7 @@ export default function Header() {
                     <h2>LCCB AI</h2>
                 </div>
                 <div className='Header__actions'>
-                    <ConnectButton showBalance={false} />
+                    <ConnectButton showBalance={false}/>
                 </div>
             </div>
         </header>

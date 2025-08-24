@@ -1,12 +1,16 @@
-export default async function HandleSubmit(event, pdfFile, address) {
-
-    event.preventDefault();
+export default async function HandleSubmit(pdfFile, address) {
 
     import('sweetalert2').then(Swal => {
         Swal.default.fire({
-            icon: 'loading',
-            title: 'Uploading...',
+            icon: 'info',
+            title: 'Processing...',
             text: "Please wait while we upload your PDF.",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            didOpen: () => {
+            Swal.default.showLoading();
+            }
         });
     });
 

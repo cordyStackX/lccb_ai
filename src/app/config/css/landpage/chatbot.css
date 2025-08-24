@@ -96,7 +96,7 @@
 }
 
 .ButtonArea button {
-    padding: 0.8rem;
+    padding: 0.5rem;
     border-radius: 15px;
     margin: auto 15px;
     border: 2px solid var(--border);
@@ -104,6 +104,7 @@
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease;
+    width: 150px;
 }
 
 .ButtonArea button:hover {
