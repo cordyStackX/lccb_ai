@@ -14,7 +14,7 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 
 **Disclaimer:** This project does **not** collect any user data. All data is processed and stored locally on your machine.
 
-## How to Run the Python API
+## How to Run the Python API and Nextjs
 
 1. Open this repository in your Codespace or UBUNTU WSL.
 2. In your terminal, run:
@@ -25,4 +25,4 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 
 3. Once setup is complete, open the web app
 
-   [http://localhost:3000/](https://localhost/)
+   [http://localhost:3000/](http://localhost:3000/)

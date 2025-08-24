@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Starting installation..."
+echo "Starting installation...
+"
 
 # Update package lists
 sudo apt-get update

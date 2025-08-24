@@ -13,6 +13,11 @@ export default function Banner({ onDemoClick }) {
           <button onClick={() => window.open("https://github.com/cordy001/lccb_ai", "_blank")}>Use Github Repo</button>
         </div>
       </div>
+      <span className="Banner__background">
+        <span className="Banner__circle1"></span>
+        <span className="Banner__circle2"></span>
+      </span>
+      
     </section>
   );
 }

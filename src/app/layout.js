@@ -16,6 +16,14 @@ export const metadata = {
   title: "La Consolacion College Bacolod AI",
   description:
     "AI PDF reader for LCC Bacolod: Summarize, ask questions, and interact with your documents smarter and faster.",
+  alternates: {
+     canonical: "https://lccb-ai.vercel.app/"
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true
+  },
 };
 
 export default function RootLayout({ children }) {
