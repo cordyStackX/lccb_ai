@@ -1,31 +1,49 @@
-from fastapi import FastAPI, UploadFile, File, Form
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.middleware.cors import CORSMiddleware
+from uuid import uuid4
+from pathlib import Path
 import uvicorn
-
-# Import your AI logic here (move your functions/classes to a separate module if needed)
-# For this example, let's assume you move your AI logic into a function called `ask_pdf_ai`
 
 app = FastAPI()
 
-@app.post("/ask")
-async def ask_ai(
-    question: str = Form(...),
-    pdf: UploadFile = File(...)
-):
-    # Save uploaded PDF to disk
-    pdf_path = f"/tmp/{pdf.filename}"
-    with open(pdf_path, "wb") as f:
+# CORS (so frontend like Next.js can talk to backend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Directory where files will be stored
+UPLOAD_DIR = Path("/tmp/lccb_ai_uploads")
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+# Root test route
+@app.get("/", response_class=PlainTextResponse)
+def root():
+    return "FastAPI running. Upload a PDF at /upload"
+
+# Upload PDF route
+@app.post("/upload")
+async def upload_pdf(pdf: UploadFile = File(...)):
+    # Generate a unique file ID
+    file_id = uuid4().hex
+    
+    # Destination path for saving file
+    dest = UPLOAD_DIR / f"{file_id}.pdf"
+    
+    # Save the uploaded PDF
+    with open(dest, "wb") as f:
         f.write(await pdf.read())
-
-    # Call your AI logic (refactor your script into a function that takes pdf_path and question)
-    # Example:
-    # answer, summary = ask_pdf_ai(pdf_path, question)
-    # For now, just return a placeholder:
-    answer, summary = "This is a placeholder answer.", "This is a placeholder summary."
-
+    
+    # Respond with file info
     return JSONResponse({
-        "answer": answer,
-        "summary": summary
+        "file_id": file_id,
+        "filename": pdf.filename,
+        "content_type": pdf.content_type,
+        "saved_to": str(dest)
     })
 
 if __name__ == "__main__":

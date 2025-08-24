@@ -41,17 +41,18 @@
 }
 
 .InputArea {
-    width: 90%;
-    height: 10%;
+    width: auto;
+    height: auto;
     padding: 0.8rem;
     border-radius: 15px;
-    margin: 20px auto;
+    margin: 10px auto;
     border: 2px solid var(--border);
     overflow: auto;
     cursor: pointer;
 }
 
 .InputArea input {
+    width: 90%;
     cursor: pointer;
 }
 
@@ -76,12 +77,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px auto;
 }
 
 .ButtonArea button {
     padding: 0.8rem;
     border-radius: 15px;
-    margin: auto 10px;
+    margin: auto 15px;
     border: 2px solid var(--border);
     overflow: hidden;
     cursor: pointer;

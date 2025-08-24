@@ -1,7 +1,15 @@
 "use client";
+import { useState } from 'react';
+import { HandleSubmit } from '@/app/modules/Modules__Imports';
 
 export default function ChatBot({ visible, onClose }) {
-    
+  // const [question, setQuestion] = useState('');
+  const [pdfFile, setPdfFile] = useState(null);
+
+  const OnSubmit = async (event) => {
+    await HandleSubmit(event, pdfFile);
+  };
+
   if (!visible) return null;
 
   return (
@@ -14,15 +22,16 @@ export default function ChatBot({ visible, onClose }) {
         <input type="text" placeholder="Ask a question about your PDF..." />
       </div>
       </div>
-
+      <form onSubmit={OnSubmit}>
       <div className="InputArea">
-        <input type="file" accept="application/pdf" required/>
+        <input  type="file" accept="application/pdf" onChange={(e) => setPdfFile(e.target.files[0])} required/>
       </div>
 
       <div className="ButtonArea">
-        <button onClick={() => alert("Under Development")}>Upload PDF</button>
+        <button type="submit">Upload PDF</button>
         <button onClick={onClose}>Close</button>
       </div>
+    </form>
     </section>
   );
 }

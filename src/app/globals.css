@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@import "../config/conf/root__config.css"; /* Root Config */
+@import "./config/conf/root__config.css"; /* Root Config */
 
-@import "../config/css/landpage/global.css"; /* LandPage */
+@import "./config/css/landpage/global.css"; /* LandPage */
 
 @theme inline {
   --color-background: var(--background);
@@ -26,4 +26,15 @@ body {
   height: auto;
   margin: 0 auto;
   position: relative;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }

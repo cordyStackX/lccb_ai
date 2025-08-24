@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Header, Banner, ChatBot } from '@/components/GlobalImports';
+import { Header, Banner, ChatBot } from '@/app/components/GlobalImports';
 
 export default function Home() {
   const [showChatBot, setShowChatBot] = useState(false);
