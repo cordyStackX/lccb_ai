@@ -24,14 +24,7 @@ python3 -V
 python3 -m pip install --upgrade pip
 
 # Install Python packages
-python3 -m pip install \
-    torch \
-    pypdf \
-    sentence_transformers \
-    faiss-cpu \
-    transformers \
-    spacy \
-    numpy
+pip install -r requirements.txt
 
 echo "Codespace installation demo complete!"
 
