@@ -22,7 +22,7 @@ function saveClaimed(claimedSet) {
 
 // Replace with your deployed token address
 const TOKEN_ADDRESS = process.env.NEXT_PUBLIC_LACOcoinAddress || setting.PUBLIC_ACCESS.CONTRACT_ADDRESS;
-const PROVIDER_URL = process.env.NEXT_PUBLIC_LINK_PROJECT_ID || setting.PUBLIC_ACCESS.PROJECT_ID;
+const PROVIDER_URL = process.env.NEXT_PUBLIC_LINK_PROJECT_ID || setting.PUBLIC_ACCESS.RPC_Endpoint;
 const PRIVATE_KEY = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || setting.PUBLIC_ACCESS.PRIVATE_KEY;
 
 // Usage:

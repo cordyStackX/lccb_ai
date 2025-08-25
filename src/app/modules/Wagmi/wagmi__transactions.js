@@ -39,30 +39,31 @@ export default async function WagmiTransferToken(address) {
                 text: "You do not have enough LCC tokens to complete this transaction.",
             });
         });
+      
       return false;
     }
 
     const tx = await tokenContract.transfer(platformAddress, amount);
-    await tx.wait(); // wait for transaction confirmation
+    const receipt = await tx.wait(); // wait for transaction confirmation
 
-    if (tx && tx.hash) {
+    if (receipt) {
       import('sweetalert2').then(Swal => {
           Swal.default.fire({
-              icon: 'success',
-              title: 'Transaction Sent',
-              text: `Transaction successful with hash: ${tx.hash}`,
+              icon: 'info',
+              title: 'Transaction Confirmed',
+              text: `Transaction confirmed with ${receipt}.`,
           });
       });
       return true;
     } else {
-        import('sweetalert2').then(Swal => {
-            Swal.default.fire({
-                icon: 'error',
-                title: 'Transaction Failed',
-                text: "There was an error processing your transaction.",
-            });
-        });
-        return false;
+      import('sweetalert2').then(Swal => {
+          Swal.default.fire({
+              icon: 'warning',
+              title: 'Transaction Canceled',
+              text: "Transaction was canceled.",
+          });
+      });
+
     }
 
   } catch (err) {
@@ -76,6 +77,5 @@ export default async function WagmiTransferToken(address) {
         });
     });
 
-    return;
   }
 };

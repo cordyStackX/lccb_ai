@@ -22,12 +22,11 @@ export default function ChatBot({ visible, onClose }) {
   });
 
   const OnSubmit = async (event) => {
-
     event.preventDefault();
-
-    await WagmiTransferToken(address);
-
-    await HandleSubmit(pdfFile, address);
+    const confirmed = await WagmiTransferToken(address);
+    if (confirmed) {
+      await HandleSubmit(pdfFile, address);
+    }
   };
 
   const OnAsk = async (event) => {
