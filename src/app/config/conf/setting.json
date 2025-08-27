@@ -10,7 +10,7 @@
         "note": "Please Visit https://portal.cdp.coinbase.com/products/address-history to get your RPC Endpoint"
     },
     "PUBLIC_ACCESS": {
-        "RPC_Endpoint": "https://api.developer.coinbase.com/rpc/v1/base-sepolia/sSu3tM8QPRtsarXhrcwQHEmH8KCHmPlv",
+        "RPC_Endpoint": "",
         "CONTRACT_ADDRESS": "0x60ABCe0329a628e2Be121462998B6497Da76972e",
         "PRIVATE_KEY": "91ff5fbb1220dc6ad027ed2273a1c75bb3c8a489015c4ecd088fb6ebbff6ab29",
         "PLATFORM_ADDRESS": "0xa0488357578fAEaf9e79050Fd6400Ef06C2867E4"
