@@ -1,5 +1,6 @@
 export const runtime = 'nodejs';
 import { NextResponse } from "next/server";
+import config from "@/app/config/conf/setting.json";
 
 export async function POST(req) {
     try {
@@ -15,7 +16,7 @@ export async function POST(req) {
             return NextResponse.json({ error: "No wallet address provided." }, { status: 400 });
         }
 
-        const apiUrl = "http://localhost:8000/upload";
+        const apiUrl = config.Links.API__python__upload || "http://localhost:8000/upload";
 
         const formData = new FormData();
         formData.append("pdf", pdfFile);

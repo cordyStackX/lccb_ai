@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import config from "@/app/config/conf/setting.json";
 
 export async function POST(req) {
   try {
@@ -9,7 +10,8 @@ export async function POST(req) {
       return NextResponse.json({ error: "Missing questions or address." }, { status: 400 });
     }
 
-    const apiUrl = 'http://localhost:8000/ask';
+    const apiUrl = config.Links.API__python__ask || 'http://localhost:8000/ask';
+    
     const pyRes = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

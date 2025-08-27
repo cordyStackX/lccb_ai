@@ -1,6 +1,13 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { HandleSubmit, HandleAsk, WagmiTransferToken } from '@/app/modules/Modules__Imports';
+import { 
+  // APIS Connections
+  HandleSubmit, HandleAsk, 
+  // Providers
+  WagmiTransferToken,
+  // Utilities
+  Airdrop
+} from '@/app/modules/Modules__Imports';
 import { useAccount, useBalance } from 'wagmi';
 import config from '@/app/config/conf/setting';
 
@@ -30,27 +37,12 @@ export default function ChatBot({ visible, onClose }) {
   };
 
   const OnAsk = async (event) => {
-    await HandleAsk(event, questions, address, setResponse, setLoading);
+    event.preventDefault();
+    await HandleAsk(questions, address, setResponse, setLoading);
   };
 
   useEffect(() => {
-    if (isConnected && address) {
-      setAirdropStatus("Checking for airdrop...");
-      fetch("/services/api/airdrop", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ address }),
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            setAirdropStatus("🎉 Free token sent!");
-          } else {
-            setAirdropStatus(data.message || "Already received airdrop.");
-          }
-        })
-        .catch(() => setAirdropStatus("Airdrop error."));
-    }
+      Airdrop(isConnected, address, setAirdropStatus);
   }, [isConnected, address]);
 
   if (!visible) return null;

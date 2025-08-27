@@ -1,62 +1,63 @@
+import { SweetAlert2 } from '@/app/modules/Modules__Imports';
+
 export default async function HandleSubmit(pdfFile, address) {
 
-    import('sweetalert2').then(Swal => {
-        Swal.default.fire({
-            icon: 'info',
-            title: 'Processing...',
-            text: "Please wait while we upload your PDF.",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            showConfirmButton: false,
-            didOpen: () => {
-            Swal.default.showLoading();
-            }
+    if (!pdfFile) return SweetAlert2(
+        'Error',
+        'Please upload a PDF file.',
+        'error',
+        true,
+        false
+    );
+    if (!address) return SweetAlert2(
+        'Error',
+        'Please connect your wallet.',
+        'error',
+        true,
+        false
+    );
+
+
+    try {
+
+        const formData = new FormData();
+        formData.append("pdf", pdfFile);
+        formData.append("address", address);
+
+        const response = await fetch("/services/api/Connect__python", {
+        method: "POST",
+        body: formData,
         });
-    });
 
-    if (!pdfFile) return import('sweetalert2').then(Swal => {
-        Swal.default.fire({
-            icon: 'error',
-            title: 'Error',
-            text: "Please upload a PDF file.",
-        });
-    });
-    if (!address) return import('sweetalert2').then(Swal => {
-        Swal.default.fire({
-            icon: 'error',
-            title: 'Error',
-            text: "Please connect your wallet.",
-        });
-    });
+        const result = await response.json();
 
-    const formData = new FormData();
-    formData.append("pdf", pdfFile);
-    formData.append("address", address);
+        if (response.ok) {
+        SweetAlert2(
+            'Uploaded Successfully',
+            result.message || 'PDF uploaded successfully.',
+            'success',
+            true,
+            false
+        );
+        } else {
+        SweetAlert2(
+            'Error',
+            result.message || 'Error uploading PDF.',
+            'error',
+            true,
+            false
+        );
+        }
 
-    const response = await fetch("/services/api/Connect__python", {
-      method: "POST",
-      body: formData,
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      import('sweetalert2').then(Swal => {
-          Swal.default.fire({
-              icon: 'success',
-              title: 'Success',
-              text: `PDF uploaded successfully: ${result.saved_to}`,
-          });
-      });
-    } else {
-      import('sweetalert2').then(Swal => {
-          Swal.default.fire({
-              icon: 'error',
-              title: 'Error',
-              text: `Error: ${result.error || "Unknown error"}`,
-          });
-      });
+    } catch (error) {
+        console.error(`Error: ${error.message || "Unknown error"}`);
+        SweetAlert2(
+            'Error',
+            error.message || 'Error uploading PDF.',
+            'error',
+            true,
+            false
+        );
     }
 
-    console.log(result);
 }

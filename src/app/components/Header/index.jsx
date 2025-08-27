@@ -2,10 +2,8 @@ import Image from 'next/image';
 import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-
 export default function Header() {
     
-
     return(
         <header className="Header">
             <div className="Header__content">

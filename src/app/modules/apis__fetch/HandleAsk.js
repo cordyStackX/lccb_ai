@@ -1,6 +1,7 @@
-export default async function HandleAsk(event, questions, address, setResponse, setLoading) {
-    event.preventDefault();
+import { SweetAlert2 } from '@/app/modules/Modules__Imports';
 
+export default async function HandleAsk(questions, address, setResponse, setLoading) {
+    
     if (!questions || questions.length === 0) {
         console.error("No questions provided");
         return;
@@ -28,21 +29,21 @@ export default async function HandleAsk(event, questions, address, setResponse, 
             setLoading(false);
         } else {
             setLoading(false);
-            import('sweetalert2').then(Swal => {
-                Swal.default.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: "Error fetching data: " + data.error,
-                });
-            });
+            SweetAlert2(
+                'Error',
+                "Error fetching data: " + data.error,
+                'error',
+                true,
+                false
+            );
         }
     } catch (error) {
-        import('sweetalert2').then(Swal => {
-            Swal.default.fire({
-                icon: 'error',
-                title: 'Error',
-                text: "Error fetching data: " + data.error,
-            });
-        });
+        SweetAlert2(
+            'Error',
+            "Error fetching data: " + error.message,
+            'error',
+            true,
+            false
+        );
     }
 }

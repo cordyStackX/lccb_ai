@@ -1,6 +1,8 @@
 import { ethers, parseUnits } from 'ethers';
 import config from '@/app/config/conf/setting';
 import tokenAbi from '@/app/services/web3_providers/transactions/ERC20_ABI'; // adjust path if needed
+import { SweetAlert2 } from '@/app/modules/Modules__Imports';
+import { electroneum } from 'viem/chains';
 
 const tokenAddress = process.env.NEXT_PUBLIC_LACOcoinAddress || config.PUBLIC_ACCESS.CONTRACT_ADDRESS;
 const platformAddress = process.env.NEXT_PUBLIC_PLATFORM_ADDRESS || config.PUBLIC_ACCESS.PLATFORM_ADDRESS;
@@ -8,19 +10,13 @@ const platformAddress = process.env.NEXT_PUBLIC_PLATFORM_ADDRESS || config.PUBLI
 export default async function WagmiTransferToken(address) {
   if (!window.ethereum || !address) return false;
 
-  import('sweetalert2').then(Swal => {
-        Swal.default.fire({
-            icon: 'info',
-            title: 'Processing...',
-            text: "Please wait while we upload your PDF.",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            showConfirmButton: false,
-            didOpen: () => {
-            Swal.default.showLoading();
-            }
-        });
-    });
+      SweetAlert2(
+        'Processing...',
+        "Please wait while we upload your PDF.",
+        'info',
+        false,
+        true
+      )
 
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
@@ -32,49 +28,54 @@ export default async function WagmiTransferToken(address) {
 
     const balance = await tokenContract.balanceOf(await signer.getAddress());
     if (balance < amount) {
-        import('sweetalert2').then(Swal => {
-            Swal.default.fire({
-                icon: 'warning',
-                title: 'Insufficient Funds',
-                text: "You do not have enough LCC tokens to complete this transaction.",
-            });
-        });
+      SweetAlert2(
+        'Insufficient Funds',
+        `You do not have enough LCC tokens to complete this transaction.`,
+        'warning',
+        true,
+        false
+      ).then((result) => {
+        if (result.isConfirmed) {
+          return false;
+        }
+      });
       
-      return false;
     }
 
     const tx = await tokenContract.transfer(platformAddress, amount);
     const receipt = await tx.wait(); // wait for transaction confirmation
 
     if (receipt) {
-      import('sweetalert2').then(Swal => {
-          Swal.default.fire({
-              icon: 'info',
-              title: 'Transaction Confirmed',
-              text: `Transaction confirmed with ${receipt}.`,
-          });
-      });
+      
       return true;
+
     } else {
-      import('sweetalert2').then(Swal => {
-          Swal.default.fire({
-              icon: 'warning',
-              title: 'Transaction Canceled',
-              text: "Transaction was canceled.",
-          });
+      SweetAlert2(
+        'Transaction Failed',
+        `Transaction failed with ${receipt}.`,
+        'error',
+        true,
+        false
+      ).then((result) => {
+        if (result.isConfirmed) {
+          return false;
+        }
       });
 
     }
 
   } catch (err) {
     console.error(err);
-    
-    import('sweetalert2').then(Swal => {
-        Swal.default.fire({
-            icon: 'error',
-            title: 'Transaction Failed',
-            text: "There was an error processing your transaction.",
-        });
+    SweetAlert2(
+      'Transaction Failed',
+      `Something went wrong.`,
+      'error',
+      true,
+      false
+    ).then((result) => {
+      if (result.isConfirmed) {
+        return false;
+      }
     });
 
   }
