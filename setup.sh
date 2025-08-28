@@ -50,7 +50,7 @@ npm run build
 
 # Start FastAPI in background
 echo -e "${GREEN}==> Starting FastAPI server...${RESET}"
-nohup python3 src/python/api_server.py > tmp/fastapi.log 2>&1 &
+nohup python3 src/python/api_server.py >> /tmp/fastapi.log 2>&1 & disown
 
 # Start Next.js server (this will block)
 echo -e "${GREEN}==> Starting Next.js at http://localhost:3000...${RESET}"
