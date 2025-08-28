@@ -16,7 +16,7 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 # Install essential packages (optional if already present in Codespaces)
 echo -e "${YELLOW}==> Installing Essential Packages...${RESET}"
 
-sudo apt-get install -y npm nodejs python3 python3-pip
+sudo apt-get install -y nodejs python3 python3-pip
 
 echo -e "${GREEN}==> Node.js version:${RESET}"
 node -v
@@ -48,4 +48,5 @@ echo -e "${GREEN}==> Starting FastAPI server...${RESET}"
 nohup python3 src/python/api_server.py > fastapi.log 2>&1 &
 
 # Start Next.js server (this will block)
-echo -e "${GREEN}==> Starting Next.js at
+echo -e "${GREEN}==> Starting Next.js at http://localhost:3000...${RESET}"
+npm run start
