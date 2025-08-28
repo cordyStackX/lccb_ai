@@ -9,13 +9,7 @@ export default async function HandleSubmit(pdfFile, address) {
         true,
         false
     );
-    if (!address) return SweetAlert2(
-        'Error',
-        'Please connect your wallet.',
-        'error',
-        true,
-        false
-    );
+    
 
 
     try {

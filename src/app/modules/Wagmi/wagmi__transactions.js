@@ -7,7 +7,13 @@ const tokenAddress = process.env.NEXT_PUBLIC_LACOcoinAddress || config.PUBLIC_AC
 const platformAddress = process.env.NEXT_PUBLIC_PLATFORM_ADDRESS || config.PUBLIC_ACCESS.PLATFORM_ADDRESS;
 
 export default async function WagmiTransferToken(address) {
-  if (!window.ethereum || !address) return false;
+  if (!address) return SweetAlert2(
+      'Error',
+      'Please connect your wallet.',
+      'error',
+      true,
+      false
+  );
 
   const res = await CheckConnections();
 
