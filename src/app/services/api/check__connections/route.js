@@ -6,8 +6,7 @@ export async function GET() {
         const data = await response.json();
         return NextResponse.json(data);
     } catch (error) {
-        console.error("Error fetching connections:", error);
-        return NextResponse.json({ error: "Failed to fetch connections" }, { status: 500 });
+        return NextResponse.json({ error: "Failed to fetch connections", details: error.message }, { status: 500 });
     }
     
 }

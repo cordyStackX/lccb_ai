@@ -16,21 +16,22 @@ export default function Home() {
   let isMounted = true;
 
   const checkLoop = async () => {
-    while (isMounted) {
-      if (RPC_Endpoint_json !== undefined) {
+
+    if (RPC_Endpoint_json !== "") {
         setRPC_Endpoint(true);
         console.log("RPC Connected:", RPC_Endpoint_json);
-      }
+    }
+
+    while (isMounted) {
 
       const res = await CheckConnections();
-      console.log("Connection Status:", res);
 
       if (res.status === "ok") {
         setConnections(true);
         break; // stop checking once connected
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 5000));
     }
   };
 
@@ -47,7 +48,7 @@ export default function Home() {
       <div className="Home">
 
         <div className="warning__container">
-          <div className={`${RPC_Endpoint ? "hidden" : "warning"}`}><p>⚠️ Missing <u>RPC_Endpoint</u> at src/app/config/conf/setting.json</p> <div><GridLoader color="#fff" size={5}/></div> </div>
+          <div className={`${RPC_Endpoint ? "hidden" : "warning"}`}><p>⚠️ Missing <u>RPC_Endpoint</u> at src/app/config/conf/setting.json</p> </div>
 
           <div className={`${connections ? "hidden" : "warning"}`}><p>⚠️ No Connection <u>API__python__check__connections</u> at src/app/config/conf/setting.json </p> <div><GridLoader color="#fff" size={5}/></div> </div>
         </div>
