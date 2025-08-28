@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { WalletProviders } from './modules/Modules__Imports';
+import { Header, Footer } from './components/GlobalImports';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ export const metadata = {
      canonical: "https://lccb-ai.vercel.app/"
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true
   },
@@ -33,7 +34,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <WalletProviders>
+          <Header />
           {children}
+          <Footer />
         </WalletProviders>
       </body>
     </html>

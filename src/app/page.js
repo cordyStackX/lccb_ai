@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Header, Banner, ChatBot } from '@/app/components/GlobalImports';
+import { Banner, ChatBot } from '@/app/components/GlobalImports';
 import { CheckConnections } from '@/app/modules/Modules__Imports';
 import { GridLoader } from 'react-spinners';
 import config from "@/app/config/conf/setting";
@@ -53,17 +53,9 @@ export default function Home() {
           <div className={`${connections ? "hidden" : "warning"}`}><p>⚠️ No Connection <u>API__python__check__connections</u> at src/app/config/conf/setting.json </p> <div><GridLoader color="#fff" size={5}/></div> </div>
         </div>
 
-        
-        <Header />
-
         <Banner onDemoClick={() => setShowChatBot(true)} />
 
         <ChatBot visible={showChatBot} onClose={() => setShowChatBot(false)} />
-
-        <footer>
-            <a href="https://lcc.edu.ph/">© La Consolacion College Bacolod</a>
-            <p>Developed by <a href="https://cordy-portfolio.vercel.app/">Cordy</a></p>
-        </footer>
       </div>
     </main>
   );
