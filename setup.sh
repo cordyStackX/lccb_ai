@@ -23,7 +23,7 @@ sudo apt-get install -y nodejs python3 python3-pip
 
 echo -e "${YELLOW}==> Updating NPM packages...${RESET}"
 npm install -g n
-n latest
+sudo n latest
 
 echo -e "${GREEN}==> Node.js version:${RESET}"
 node -v
