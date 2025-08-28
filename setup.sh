@@ -21,9 +21,7 @@ echo -e "${YELLOW}==> Installing Essential Packages...${RESET}"
 
 sudo apt-get install -y nodejs python3 python3-pip
 
-echo -e "${YELLOW}==> Updating NPM packages...${RESET}"
-npm install -g n
-sudo n latest
+# Verify installations
 
 echo -e "${GREEN}==> Node.js version:${RESET}"
 node -v
