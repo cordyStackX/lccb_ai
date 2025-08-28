@@ -1,40 +1,49 @@
 #!/bin/bash
 set -e
 
-echo "Starting installation...
-"
+GREEN="\033[32m"
+BLUE="\033[34m"
+YELLOW="\033[33m"
+RESET="\033[0m"
+
+echo -e "${BLUE}<==> Starting installation... <==>${RESET}"
 
 # Update package lists
+echo -e "${YELLOW}==> Updating package lists...${RESET}"
 sudo apt-get update
 
 # Install essential packages (optional if already present in Codespaces)
+echo -e "${YELLOW}==> Installing Essential Packages...${RESET}"
 sudo apt-get install -y npm nodejs python3 python3-pip
 
-echo "Node.js version:"
+echo -e "${GREEN}==> Node.js version:${RESET}"
 node -v
 npm -v
 npx -v
 
-echo "Installing NPM packages..."
+echo -e "${YELLOW}==> Installing NPM packages...${RESET}"
 npm install
 
-echo "Python version:"
+echo -e "${GREEN}==> Python version:${RESET}"
 python3 -V
 
 # Upgrade pip
+echo -e "${YELLOW}==> Upgrading pip...${RESET}"
 python3 -m pip install --upgrade pip
 
 # Install Python packages
+echo -e "${YELLOW}==> Installing Python packages...${RESET}"
 pip install -r requirements.txt
 
-echo "Building Next.js app..."
+echo -e "${BLUE}<==> Building Next.js app... <==>${RESET}"
+echo -e "${YELLOW}==> Running lint...${RESET}"
 npm run lint
+echo -e "${YELLOW}==> Running build...${RESET}"
 npm run build
 
 # Start FastAPI in background
-echo "Starting FastAPI server..."
+echo -e "${GREEN}==> Starting FastAPI server...${RESET}"
 nohup python3 src/python/api_server.py > fastapi.log 2>&1 &
 
 # Start Next.js server (this will block)
-echo "Starting Next.js at http://localhost:3000"
-npm run start
+echo -e "${GREEN}==> Starting Next.js at
