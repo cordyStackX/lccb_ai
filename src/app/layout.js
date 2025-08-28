@@ -25,6 +25,7 @@ export const metadata = {
     follow: true,
     nocache: true
   },
+  lang: "en",
 };
 
 export default function RootLayout({ children }) {
