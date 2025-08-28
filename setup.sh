@@ -28,6 +28,7 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "Building Next.js app..."
+npm run lint
 npm run build
 
 # Start FastAPI in background
