@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -23,5 +24,5 @@ export default function Header() {
                 </div>
             </div>
         </header>
-    )
+    );
 }

@@ -66,5 +66,11 @@ async def ask_ai(req: AskRequest):
     answer, summary = ask_pdf_ai(str(pdf_path), req.questions)
     return {"answer": answer, "summary": summary}
 
+@app.get("/check_connections")
+def check_connections():
+    return {"status": "ok"}
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+

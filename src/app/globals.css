@@ -39,22 +39,37 @@ form {
   flex-flow: column;
 }
 
-.warning {
+.warning__container {
   position: absolute;
-  top: 1rem;
-  left: 1%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: left;
+  flex-flow: column;
+  height: auto;
+}
+
+.warning {
   background: rgb(255, 51, 0);
   color: #fff;
   padding: 1rem;
   border: 1px solid red;
   border-radius: 0.5rem;
-  z-index: 1000;
-  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   font-weight: bold;
+  margin: 10px;
+  overflow: hidden;
 }
-
+.warning div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
 .hidden {
-  opacity: 0;
+  display: none;
 }
 
 footer {

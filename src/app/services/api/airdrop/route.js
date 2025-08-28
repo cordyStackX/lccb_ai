@@ -26,9 +26,7 @@ const PROVIDER_URL = process.env.NEXT_PUBLIC_LINK_PROJECT_ID || setting.PUBLIC_A
 const PRIVATE_KEY = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || setting.PUBLIC_ACCESS.PRIVATE_KEY;
 
 // Usage:
-const airdropEnabled = setting.set_airdrop.enabled;
 const airdropAmount = setting.set_airdrop.amount;
-const airdropToken = setting.set_airdrop.token;
 
 export async function POST(req) {
   const { address } = await req.json();

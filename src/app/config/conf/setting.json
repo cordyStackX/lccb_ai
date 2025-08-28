@@ -1,8 +1,6 @@
 {
     "set_airdrop": {
-        "enabled": false,
-        "amount": 10,
-        "token": "LACO"
+        "amount": 10
     },
     "Note": {
         "description": "Dont send any token in the PRIVATE_KEY this is only for test purposes",
@@ -10,13 +8,15 @@
         "note": "Please Visit https://portal.cdp.coinbase.com/products/address-history to get your RPC Endpoint"
     },
     "PUBLIC_ACCESS": {
-        "RPC_Endpoint": "",
+        "RPC_Endpoint": "https://api.developer.coinbase.com/rpc/v1/base-sepolia/sSu3tM8QPRtsarXhrcwQHEmH8KCHmPlv",
         "CONTRACT_ADDRESS": "0x60ABCe0329a628e2Be121462998B6497Da76972e",
         "PRIVATE_KEY": "91ff5fbb1220dc6ad027ed2273a1c75bb3c8a489015c4ecd088fb6ebbff6ab29",
         "PLATFORM_ADDRESS": "0xa0488357578fAEaf9e79050Fd6400Ef06C2867E4"
     },
     "Links": {
         "API__python__ask": "http://localhost:8000/ask",
-        "API__python__upload": "http://localhost:8000/upload"
+        "API__python__upload": "http://localhost:8000/upload",
+        "API__python__check__connections": "http://localhost:8000/check_connections",
+        "Info" : "just run python3 /src/python/api__server.py"
     }
 }

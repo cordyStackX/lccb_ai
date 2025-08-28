@@ -1,8 +1,7 @@
 import { ethers, parseUnits } from 'ethers';
 import config from '@/app/config/conf/setting';
 import tokenAbi from '@/app/services/web3_providers/transactions/ERC20_ABI'; // adjust path if needed
-import { SweetAlert2 } from '@/app/modules/Modules__Imports';
-import { electroneum } from 'viem/chains';
+import { SweetAlert2, CheckConnections } from '@/app/modules/Modules__Imports';
 
 const tokenAddress = process.env.NEXT_PUBLIC_LACOcoinAddress || config.PUBLIC_ACCESS.CONTRACT_ADDRESS;
 const platformAddress = process.env.NEXT_PUBLIC_PLATFORM_ADDRESS || config.PUBLIC_ACCESS.PLATFORM_ADDRESS;
@@ -10,13 +9,26 @@ const platformAddress = process.env.NEXT_PUBLIC_PLATFORM_ADDRESS || config.PUBLI
 export default async function WagmiTransferToken(address) {
   if (!window.ethereum || !address) return false;
 
-      SweetAlert2(
-        'Processing...',
-        "Please wait while we upload your PDF.",
-        'info',
-        false,
-        true
-      )
+  const res = await CheckConnections();
+
+  if (res.status !== "ok") {
+    SweetAlert2(
+      'Error API',
+      'Connection failed',
+      'error',
+      true,
+      false
+    );
+    return false;
+  }
+
+  SweetAlert2(
+    'Processing...',
+    "Please wait while we upload your PDF.",
+    'info',
+    false,
+    true
+  );
 
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);

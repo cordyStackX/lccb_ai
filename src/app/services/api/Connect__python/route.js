@@ -36,6 +36,7 @@ export async function POST(req) {
         return NextResponse.json({ saved_to: result.saved_to }, { status: 200 });
 
     } catch (error) {
+        console.error("Error in Connect__python route:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 

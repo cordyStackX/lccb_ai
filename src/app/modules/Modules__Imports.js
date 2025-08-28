@@ -3,6 +3,8 @@ export { default as HandleSubmit } from './apis__fetch/HandleSubmit';
 
 export { default as HandleAsk } from './apis__fetch/HandleAsk';
 
+export { default as CheckConnections } from './apis__fetch/CheckConnections';
+
 // Providers
 export { default as WalletProviders } from './Wagmi/wagmi__client';
 

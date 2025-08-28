@@ -14,7 +14,7 @@ export default async function HandleAsk(questions, address, setResponse, setLoad
 
     try {
         setLoading(true);
-        const response = await fetch('/services/api/Ask__ai', {
+        const response = await fetch('/services/api/ask__ai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

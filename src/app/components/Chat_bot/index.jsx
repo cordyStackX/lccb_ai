@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { 
   // APIS Connections
-  HandleSubmit, HandleAsk, 
+  HandleSubmit, HandleAsk,
   // Providers
   WagmiTransferToken,
   // Utilities
@@ -30,7 +30,7 @@ export default function ChatBot({ visible, onClose }) {
 
   const OnSubmit = async (event) => {
     event.preventDefault();
-    const confirmed = await WagmiTransferToken(address);
+    const confirmed = await WagmiTransferToken(address); 
     if (confirmed) {
       await HandleSubmit(pdfFile, address);
     }
