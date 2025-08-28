@@ -8,6 +8,9 @@ RESET="\033[0m"
 
 echo -e "${BLUE}<==> Starting installation... <==>${RESET}"
 
+echo -e "${YELLOW}==> Updating Repository...${RESET}"
+git pull origin main --rebase
+
 # Update package lists
 echo -e "${YELLOW}==> Updating package lists...${RESET}"
 sudo apt-get update
@@ -17,6 +20,10 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 echo -e "${YELLOW}==> Installing Essential Packages...${RESET}"
 
 sudo apt-get install -y nodejs python3 python3-pip
+
+echo -e "${YELLOW}==> Updating NPM packages...${RESET}"
+npm install -g n
+n latest
 
 echo -e "${GREEN}==> Node.js version:${RESET}"
 node -v
