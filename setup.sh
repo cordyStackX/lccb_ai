@@ -8,9 +8,6 @@ RESET="\033[0m"
 
 echo -e "${BLUE}<==> Starting installation... <==>${RESET}"
 
-echo -e "${YELLOW}==> Updating Repository...${RESET}"
-git pull origin main --rebase
-
 # Update package lists
 echo -e "${YELLOW}==> Updating package lists...${RESET}"
 sudo apt-get update
