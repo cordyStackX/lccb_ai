@@ -19,7 +19,7 @@
     "path": "^0.12.7",
     "pino-pretty": "^13.1.1",
     "qr": "^0.5.1",
-    "react": "19.1.0",
+    "react": "19.1.1",
     "react-dom": "19.1.0",
     "react-spinners": "^0.17.0",
     "sweetalert2": "^11.22.4",
