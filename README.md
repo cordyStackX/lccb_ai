@@ -72,6 +72,7 @@ flowchart TD
 
 ## Directory Tree
 
+```bash
 src
 ├── app
 │   ├── components
@@ -136,3 +137,4 @@ src
         └── lccb_ai_uploads
             ├── 0xa0488357578fAEaf9e79050Fd6400Ef06C2867E4.pdf
             └── 0xD170b2A5441766ff39E1286a1dBD705D4735bFCe.pdf
+```
