@@ -41,6 +41,11 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 LLCB AI is a modular AI project built using a **Service-Oriented Architecture (SOA)** approach.  
 It integrates Web3 services, Python APIs, and frontend components for a scalable and maintainable system.
 
+SOA (Service-Oriented Architecture) is a software design style where your system is divided into independent, reusable services that communicate with each other — usually over a network (like HTTP or APIs).
+
+Each service does one specific job and can be used by different applications.
+These services are loosely coupled, meaning they don’t depend on each other’s internal code — only on what they expose (like APIs).
+
 
 ```mermaid
 flowchart TD
