@@ -33,3 +33,39 @@ Built with Next.js and Python, this app combines modern web technologies and AI 
 1. Get your RPC at https://portal.cdp.coinbase.com/products/address-history
 
 2. Config and Update the RPC_Endpoint in /src/app/config/conf/setting.json.
+
+---
+
+## Architecture Overview
+
+LLCB AI is a modular AI project built using a **Service-Oriented Architecture (SOA)** approach.  
+It integrates Web3 services, Python APIs, and frontend components for a scalable and maintainable system.
+
+
+```mermaid
+flowchart TD
+    subgraph Frontend
+        A["App Components (Banner, Chat Bot, Header, Footer)"]
+    end
+
+    subgraph Config
+        B["Config Files (CSS, Settings, Globals)"]
+    end
+
+    subgraph Backend_JS
+        C["Modules & Services (API Fetch, Wagmi, Utilities)"]
+        D["Web3 Providers (Wallet, Transactions)"]
+    end
+
+    subgraph Backend_Python
+        E["Python API Server & Utilities (checkGPU, sample.py)"]
+        F["Uploads Storage (tmp/lccb_ai_uploads)"]
+    end
+
+    %% Connections
+    A --> C
+    A --> B
+    C --> D
+    C --> E
+    E --> F
+
