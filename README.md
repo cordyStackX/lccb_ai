@@ -68,4 +68,71 @@ flowchart TD
     C --> D
     C --> E
     E --> F
+```
 
+## Directory Tree
+
+src
+├── app
+│   ├── components
+│   │   ├── Banner
+│   │   │   └── index.jsx
+│   │   ├── Chat_bot
+│   │   │   └── index.jsx
+│   │   ├── Footer
+│   │   │   └── index.jsx
+│   │   ├── GlobalImports.js
+│   │   └── Header
+│   │       └── index.jsx
+│   ├── config
+│   │   ├── conf
+│   │   │   ├── claimed.json
+│   │   │   ├── root__config.css
+│   │   │   └── setting.json
+│   │   └── css
+│   │       └── landpage
+│   │           ├── banner.css
+│   │           ├── chatbot.css
+│   │           ├── global.css
+│   │           └── header.css
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.js
+│   ├── modules
+│   │   ├── apis__fetch
+│   │   │   ├── CheckConnections.js
+│   │   │   ├── HandleAsk.js
+│   │   │   └── HandleSubmit.js
+│   │   ├── Modules__Imports.js
+│   │   ├── utilitis
+│   │   │   ├── Airdrop.js
+│   │   │   └── SweetAlert2.js
+│   │   └── Wagmi
+│   │       ├── wagmi__client.js
+│   │       └── wagmi__transactions.js
+│   ├── page.js
+│   └── services
+│       ├── api
+│       │   ├── airdrop
+│       │   │   └── route.js
+│       │   ├── ask__ai
+│       │   │   └── route.js
+│       │   ├── check__connections
+│       │   │   └── route.js
+│       │   └── Connect__python
+│       │       └── route.js
+│       └── web3_providers
+│           ├── transactions
+│           │   └── ERC20_ABI.json
+│           └── Wallet__wagmi
+│               └── coinbased__provider.js
+└── python
+    ├── api_server.py
+    ├── checkGPU.py
+    ├── __pycache__
+    │   └── sample.cpython-313.pyc
+    ├── sample.py
+    └── tmp
+        └── lccb_ai_uploads
+            ├── 0xa0488357578fAEaf9e79050Fd6400Ef06C2867E4.pdf
+            └── 0xD170b2A5441766ff39E1286a1dBD705D4735bFCe.pdf
