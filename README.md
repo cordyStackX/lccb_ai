@@ -45,36 +45,69 @@ It integrates Web3 services, Python APIs, and frontend components for a scalable
 ```mermaid
 flowchart TD
     subgraph Frontend
-        A["App Components (Banner, Chat Bot, Header, Footer)"]
-    end
-
-    subgraph Config
-        B["Config Files (CSS, Settings, Globals)"]
+        A["Components (Banner, Chat Bot, Header, Footer)"]
+        B["Config (CSS, JSON, Globals)"]
     end
 
     subgraph Backend_JS
-        C["Modules & Services (API Fetch, Wagmi, Utilities)"]
-        D["Web3 Providers (Wallet, Transactions)"]
+        C["Modules (API Fetch, Utilities, Wagmi)"]
+        D["Services (API Routes, Web3 Providers)"]
     end
 
     subgraph Backend_Python
-        E["Python API Server & Utilities (checkGPU, sample.py)"]
-        F["Uploads Storage (tmp/lccb_ai_uploads)"]
+        E["Python Server (api_server.py, checkGPU.py)"]
+        F["Storage (tmp/lccb_ai_uploads)"]
     end
 
-%% Connections
+    %% Connections
     A --> C
-    A --> B
+    B --> C
     C --> D
-    C --> E
+    D --> E
     E --> F
-%% Styling nodes
-    style A fill:#f9f,stroke:#333,stroke-width:2px,color:#000
-    style B fill:#bbf,stroke:#333,stroke-width:2px,color:#000
-    style C fill:#bfb,stroke:#333,stroke-width:2px,color:#000
-    style D fill:#ffb,stroke:#333,stroke-width:2px,color:#000
-    style E fill:#fbb,stroke:#333,stroke-width:2px,color:#000
+
+    %% Styling
+    style A fill:#8ecae6,stroke:#023047,stroke-width:2px,color:#000
+    style B fill:#bde0fe,stroke:#023047,stroke-width:2px,color:#000
+    style C fill:#ffb703,stroke:#fb8500,stroke-width:2px,color:#000
+    style D fill:#ffd166,stroke:#fb8500,stroke-width:2px,color:#000
+    style E fill:#06d6a0,stroke:#118ab2,stroke-width:2px,color:#000
+    style F fill:#ef476f,stroke:#d62828,stroke-width:2px,color:#fff
+
 ```
+---
+
+## 🧩 **3. How LLCB AI Follows SOA**
+
+| SOA Layer | Folder / Service | Description |
+|------------|------------------|--------------|
+| **Service Consumers** | `src/app/components` | The **frontend UI** — users interact here (Banner, Chat Bot, Header, Footer). |
+| **Configuration Layer** | `src/app/config` | Contains CSS and JSON settings that define global behaviors and styles. |
+| **Business Logic / Middleware** | `src/app/modules` | Handles **API calls**, utilities like `Airdrop.js`, and Web3 integrations using Wagmi. |
+| **Service Providers** | `src/app/services` | Provides REST APIs like `/api/ask__ai`, `/api/check__connections`, and blockchain providers. |
+| **Backend Processing** | `python/` | Python-based AI processing (e.g., `api_server.py`, `checkGPU.py`) acting as the **AI engine**. |
+| **Storage / Data Layer** | `python/tmp/lccb_ai_uploads` | Local file storage for uploaded PDFs and AI documents. |
+
+---
+
+## ⚡ **4. How It Works**
+
+1. **Frontend (React)** → Users interact with UI components.  
+2. **Modules** → Handle logic like asking AI (`HandleAsk.js`) or checking wallet connection.  
+3. **Services (API routes)** → Act as gateways to connect JS frontend to backend (JS or Python).  
+4. **Python backend** → Performs AI and GPU-based computations.  
+5. **Storage** → Saves uploaded user files for future processing.  
+
+---
+
+✅ **Result:**  
+Your LLCB AI project is basically a **hybrid SOA system** —  
+- *Frontend* acts as the **consumer**,  
+- *JS modules & APIs* as the **middleware**,  
+- *Python backend* as the **service provider**,  
+- *Storage* as the **data layer**.  
+
+---
 
 ## Directory Tree
 
