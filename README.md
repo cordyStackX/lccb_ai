@@ -62,12 +62,18 @@ flowchart TD
         F["Uploads Storage (tmp/lccb_ai_uploads)"]
     end
 
-    %% Connections
+%% Connections
     A --> C
     A --> B
     C --> D
     C --> E
     E --> F
+%% Styling nodes
+    style A fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#bbf,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#bfb,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#ffb,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#fbb,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ## Directory Tree
